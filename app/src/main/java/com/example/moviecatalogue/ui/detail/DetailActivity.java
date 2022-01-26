@@ -20,6 +20,7 @@ import com.example.moviecatalogue.ui.until.ViewModelFactory;
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_MODEL = "extra_model";
+    public static final String EXTRA_MODEL_TV = "extra_model_tv";
 
     private ActivityDetailBinding activityDetailBinding;
 
