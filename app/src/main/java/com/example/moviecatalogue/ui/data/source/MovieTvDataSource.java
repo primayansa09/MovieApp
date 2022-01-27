@@ -14,7 +14,7 @@ public interface MovieTvDataSource {
 
     LiveData<List<TvResultsItem>> getAllTvShow();
 
-    LiveData<MovieResultsItem> getMovieDetail(String movieId);
+    LiveData<MovieResultsItem> getMovieDetail(int movieId);
 
-    LiveData<TvResultsItem> getTvDetail(String TvId);
+    LiveData<TvResultsItem> getTvDetail(int TvId);
 }

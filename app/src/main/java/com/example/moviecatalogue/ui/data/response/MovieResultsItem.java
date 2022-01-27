@@ -1,5 +1,8 @@
 package com.example.moviecatalogue.ui.data.response;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import org.jetbrains.annotations.NotNull;
@@ -48,6 +51,20 @@ public final class MovieResultsItem {
 		this.voteAverage = voteAverage;
 		this.id = id;
 		this.voteCount = voteCount;
+	}
+
+	protected MovieResultsItem(Parcel in) {
+		overview = in.readString();
+		originalLanguage = in.readString();
+		originalTitle = in.readString();
+		title = in.readString();
+		posterPath = in.readString();
+		backdropPath = in.readString();
+		releaseDate = in.readString();
+		popularity = in.readDouble();
+		voteAverage = in.readFloat();
+		id = in.readInt();
+		voteCount = in.readInt();
 	}
 
 	@NotNull

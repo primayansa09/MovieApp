@@ -64,7 +64,8 @@ public class TvShowAdapter extends RecyclerView.Adapter<TvShowAdapter.TvViewHold
 
             Glide.with(itemView.getContext())
                     .load(Const.BASE_IMAGE_URL + tvShow.getPosterPath())
-                    .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
+                    .apply(RequestOptions.placeholderOf(R.drawable.ic_loading)
+                            .error(R.drawable.ic_error))
                     .into(binding.imgMovie);
         }
     }

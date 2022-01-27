@@ -1,7 +1,6 @@
 package com.example.moviecatalogue.ui.data.source;
 
 import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -62,10 +61,12 @@ public class MovieRepository implements MovieTvDataSource {
     }
 
     @Override
-    public LiveData<MovieResultsItem> getMovieDetail(String movieId) {
+    public LiveData<MovieResultsItem> getMovieDetail(int movieId) {
         MutableLiveData<MovieResultsItem> detailMovie = new MutableLiveData<>();
         remoteDataSource.findMovies(resultsItemList -> {
-                for (MovieResultsItem response : resultsItemList){
+            if (resultsItemList != null){
+                for (MovieResultsItem response : resultsItemList) {
+                    if (movieId == response.getId()) {
                         moviesDetail = new MovieResultsItem(
                                 response.getOverview(),
                                 response.getOriginalLanguage(),
@@ -80,7 +81,9 @@ public class MovieRepository implements MovieTvDataSource {
                                 response.getVoteCount());
                     }
 
-                detailMovie.postValue(moviesDetail);
+                    detailMovie.postValue(moviesDetail);
+                }
+            }
 
         });
         return detailMovie;
@@ -115,27 +118,32 @@ public class MovieRepository implements MovieTvDataSource {
     }
 
     @Override
-    public LiveData<TvResultsItem> getTvDetail(String TvId) {
+    public LiveData<TvResultsItem> getTvDetail(int TvId) {
         MutableLiveData<TvResultsItem> tvDetail = new MutableLiveData<>();
         remoteDataSource.findTvShow(resultsTvItemList -> {
-            for (TvResultsItem response : resultsTvItemList){
-                tvShowDetail = new TvResultsItem(
-                        response.getFirstAirDate(),
-                        response.getOverview(),
-                        response.getOriginalLanguage(),
-                        response.getPosterPath(),
-                        response.getBackdropPath(),
-                        response.getOriginalName(),
-                        response.getPopularity(),
-                        response.getVoteAverage(),
-                        response.getName(),
-                        response.getId(),
-                        response.getVoteCount());
+            if (resultsTvItemList != null){
+                for (TvResultsItem response : resultsTvItemList){
+                    if (TvId == response.getId()){
+                        tvShowDetail = new TvResultsItem(
+                                response.getFirstAirDate(),
+                                response.getOverview(),
+                                response.getOriginalLanguage(),
+                                response.getPosterPath(),
+                                response.getBackdropPath(),
+                                response.getOriginalName(),
+                                response.getPopularity(),
+                                response.getVoteAverage(),
+                                response.getName(),
+                                response.getId(),
+                                response.getVoteCount());
 
+                    }
+                    tvDetail.postValue(tvShowDetail);
+                }
             }
-            tvDetail.postValue(tvShowDetail);
+
         });
-        return null;
+        return tvDetail;
     }
 
 }

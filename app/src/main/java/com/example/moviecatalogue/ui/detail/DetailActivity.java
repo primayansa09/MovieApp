@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
@@ -20,7 +21,7 @@ import com.example.moviecatalogue.ui.until.ViewModelFactory;
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_MODEL = "extra_model";
-    public static final String EXTRA_MODEL_TV = "extra_model_tv";
+    public static final String TAG = "DetailActivity";
 
     private ActivityDetailBinding activityDetailBinding;
 
@@ -41,14 +42,15 @@ public class DetailActivity extends AppCompatActivity {
         DetailViewModel viewModel = new ViewModelProvider(this, factory).get(DetailViewModel.class);
 
         Bundle extra = getIntent().getExtras();
+        Log.e(TAG, "Data: " + extra.toString());
         if (extra != null){
-            String movieId = extra.getString(EXTRA_MODEL);
-            String tvId = extra.getString(EXTRA_MODEL);
+            int idData = extra.getInt(EXTRA_MODEL, -1);
+            int tvId = extra.getInt(EXTRA_MODEL, -1);
             if (getIntent().hasExtra(EXTRA_MODEL)) {
                 activityDetailBinding.progreeBarDetail.setVisibility(View.VISIBLE);
                 activityDetailBinding.content.setVisibility(View.VISIBLE);
 
-                viewModel.setSelectedMovie(movieId);
+                viewModel.setSelectedMovie(idData);
                 viewModel.getDetailMovie().observe(this, movies -> {
                     activityDetailBinding.progreeBarDetail.setVisibility(View.GONE);
                     activityDetailBinding.content.setVisibility(View.VISIBLE);
@@ -60,13 +62,12 @@ public class DetailActivity extends AppCompatActivity {
                 activityDetailBinding.content.setVisibility(View.VISIBLE);
 
                 viewModel.setSelectedTv(tvId);
-                viewModel.getDetailTv().observe(this, tvShows->{
+                viewModel.getDetailTv().observe(this, tv->{
                     activityDetailBinding.progreeBarDetail.setVisibility(View.GONE);
                     activityDetailBinding.content.setVisibility(View.VISIBLE);
 
-                    detailTvShow(tvShows);
+                    detailTvShow(tv);
                 });
-
             }
         }
 

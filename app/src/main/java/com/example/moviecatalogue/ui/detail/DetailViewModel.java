@@ -8,16 +8,17 @@ import com.example.moviecatalogue.ui.data.response.TvResultsItem;
 import com.example.moviecatalogue.ui.data.source.MovieRepository;
 
 public class DetailViewModel extends ViewModel {
-    private String dataId;
+    private int dataId;
+    private int dataTv;
 
     private MovieRepository movieRepository;
 
-    public void setSelectedMovie(String dataId){
+    public void setSelectedMovie(int dataId){
         this.dataId = dataId;
     }
 
-    public void setSelectedTv(String dataId){
-        this.dataId = dataId;
+    public void setSelectedTv(int dataId){
+        this.dataTv = dataId;
     }
 
     public DetailViewModel(MovieRepository movieRepository) {
@@ -29,7 +30,7 @@ public class DetailViewModel extends ViewModel {
     }
 
     public LiveData<TvResultsItem> getDetailTv(){
-        return movieRepository.getTvDetail(dataId);
+        return movieRepository.getTvDetail(dataTv);
     }
 
 
