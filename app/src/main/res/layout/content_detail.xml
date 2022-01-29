@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imgDetail"
-        android:layout_width="150dp"
-        android:layout_height="210dp"
+        android:layout_width="180dp"
+        android:layout_height="250dp"
         android:layout_margin="16dp"
         android:src="@drawable/ic_broken_image"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +45,12 @@
             android:fontFamily="@font/roboto_black"
             tools:text="@string/title"/>
 
+        <TextView
+            android:id="@+id/tvoriginal_lenguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/original_language" />
+
 
         <TextView
             android:id="@+id/tvReleaseDetail"
@@ -52,24 +58,6 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
             tools:text="@string/release_date"/>
-
-        <TextView
-            android:id="@+id/tvoriginal_lenguage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="@string/original_language" />
-
-        <TextView
-            android:id="@+id/tvpopularity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="@string/popularity" />
-
-        <TextView
-            android:id="@+id/tvvoute_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="@string/vote_count" />
 
     </LinearLayout>
 
@@ -82,8 +70,8 @@
         android:stepSize="0.1"
         android:progressBackgroundTint="@color/placeholder"
         android:progressTint="@color/yellow"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="80dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/img_share"
         app:layout_constraintTop_toBottomOf="@+id/lyt_title"

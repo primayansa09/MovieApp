@@ -1,6 +1,5 @@
 package com.example.moviecatalogue.ui.data.response;
 
-import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 

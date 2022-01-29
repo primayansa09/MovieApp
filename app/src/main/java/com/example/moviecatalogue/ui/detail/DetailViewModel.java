@@ -13,12 +13,12 @@ public class DetailViewModel extends ViewModel {
 
     private MovieRepository movieRepository;
 
-    public void setSelectedMovie(int dataId){
-        this.dataId = dataId;
+    public void setSelectedMovie(int movieId){
+        this.dataId = movieId;
     }
 
-    public void setSelectedTv(int dataId){
-        this.dataTv = dataId;
+    public void setSelectedTv(int tvId){
+        this.dataTv = tvId;
     }
 
     public DetailViewModel(MovieRepository movieRepository) {

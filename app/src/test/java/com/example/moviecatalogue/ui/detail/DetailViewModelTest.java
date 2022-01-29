@@ -1,50 +1,102 @@
 package com.example.moviecatalogue.ui.detail;
 
-import com.example.moviecatalogue.ui.data.MovieEntity;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+
+import com.example.moviecatalogue.ui.data.response.MovieResultsItem;
+import com.example.moviecatalogue.ui.data.response.TvResultsItem;
+import com.example.moviecatalogue.ui.data.source.MovieRepository;
 import com.example.moviecatalogue.ui.until.DataDummy;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.ArrayList;
+
+@RunWith(MockitoJUnitRunner.class)
 public class DetailViewModelTest {
     private DetailViewModel viewModel;
-    private MovieEntity dummyMovie = DataDummy.generateDummyMovie().get(0);
-    private MovieEntity dummyTyShow = DataDummy.generateDummyTv().get(0);
-    private String movieTitle = dummyMovie.getTitle();
-    private String tvTitle = dummyTyShow.getTitle();
+    private MovieResultsItem dummyMovie = DataDummy.generateDummyMovie().get(0);
+    private int movieId = dummyMovie.getId();
+    private TvResultsItem dummyTyShow = DataDummy.generateDummyTv().get(0);
+    private int tvId = dummyTyShow.getId();
+
+
+    @Rule
+    public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
+
+    @Mock
+    private MovieRepository movieRepository;
+
+    @Mock
+    private Observer<MovieResultsItem> movieObserver;
+
+    @Mock
+    private Observer<TvResultsItem> tvObserver;
 
     @Before
     public void setUp(){
-       // viewModel = new DetailViewModel(movieRepository);
-       // viewModel.setSelectedMovie(movieTitle);
-        //viewModel.setSelectedMovie(tvTitle);
+       viewModel = new DetailViewModel(movieRepository);
+        viewModel.setSelectedMovie(movieId);
+
     }
 
     @Test
-    public void getMovie() {
-       // viewModel.setSelectedMovie(dummyMovie.getTitle());
-        //MovieEntity movieEntity = viewModel.getMovies();
-        //assertNotNull(movieEntity);
-        //assertEquals(dummyMovie.getId(), movieEntity.getId());
-        //assertEquals(dummyMovie.getTitle(), movieEntity.getTitle());
-        //assertEquals(dummyMovie.getReleaseDate(), movieEntity.getReleaseDate());
-        //assertEquals(dummyMovie.getDuration(), movieEntity.getDuration());
-        //assertEquals(dummyMovie.getCategory(), movieEntity.getCategory());
-        //assertEquals(dummyMovie.getOverview(), movieEntity.getOverview());
-        //assertEquals(dummyMovie.getPosterPath(), movieEntity.getPosterPath());
+    public void getDetailMovie() {
+        MutableLiveData<MovieResultsItem> movie = new MutableLiveData<>();
+        movie.setValue(dummyMovie);
+        when(movieRepository.getMovieDetail(movieId)).thenReturn(movie);
+        MovieResultsItem movieResultsItem = viewModel.getDetailMovie().getValue();
+        verify(movieRepository).getMovieDetail(movieId);
+        assertNotNull(movieResultsItem);
+        assertEquals(dummyMovie.getId(), movieResultsItem.getId());
+        assertEquals(dummyMovie.getTitle(), movieResultsItem.getTitle());
+        assertEquals(dummyMovie.getBackdropPath(), movieResultsItem.getBackdropPath());
+        assertEquals(dummyMovie.getOriginalTitle(), movieResultsItem.getOriginalTitle());
+        assertEquals(dummyMovie.getOverview(), movieResultsItem.getOverview());
+        assertEquals(dummyMovie.getPosterPath(), movieResultsItem.getPosterPath());
+        assertEquals(dummyMovie.getReleaseDate(), movieResultsItem.getReleaseDate());
+        assertEquals(dummyMovie.getPopularity(), movieResultsItem.getPopularity(), dummyMovie.getVoteAverage());
+        assertEquals(dummyMovie.getVoteAverage(), movieResultsItem.getVoteAverage(), dummyMovie.getVoteAverage());
+        assertEquals(dummyMovie.getVoteCount(), movieResultsItem.getVoteCount());
+
+        viewModel.getDetailMovie().observeForever(movieObserver);
+        verify(movieObserver).onChanged(dummyMovie);
     }
 
     @Test
-    public void getTvShow(){
-       // viewModel.setSelectedMovie(dummyTyShow.getTitle());
-        //MovieEntity tvEntity = viewModel.getMovies();
-        //assertNotNull(tvEntity);
-        //assertEquals(dummyTyShow.getId(), tvEntity.getId());
-        //assertEquals(dummyTyShow.getTitle(), tvEntity.getTitle());
-        //assertEquals(dummyTyShow.getReleaseDate(), tvEntity.getReleaseDate());
-        //assertEquals(dummyTyShow.getDuration(), tvEntity.getDuration());
-        //assertEquals(dummyTyShow.getCategory(), tvEntity.getCategory());
-        //assertEquals(dummyTyShow.getOverview(), tvEntity.getOverview());
-        //assertEquals(dummyTyShow.getPosterPath(), tvEntity.getPosterPath());
+    public void getDetailTvShow(){
+        MutableLiveData<TvResultsItem> tv = new MutableLiveData<>();
+        tv.setValue(dummyTyShow);
+        when(movieRepository.getTvDetail(tvId)).thenReturn(tv);
+        TvResultsItem tvResultsItem = viewModel.getDetailTv().getValue();
+        verify(movieRepository).getTvDetail(tvId);
+        assertNotNull(tvResultsItem);
+        assertEquals(dummyTyShow.getId(), tvResultsItem.getId());
+        assertEquals(dummyTyShow.getName(), tvResultsItem.getName());
+        assertEquals(dummyTyShow.getOriginalName(), tvResultsItem.getOriginalName());
+        assertEquals(dummyTyShow.getFirstAirDate(), tvResultsItem.getFirstAirDate());
+        assertEquals(dummyTyShow.getOriginalLanguage(), tvResultsItem.getOriginalLanguage());
+        assertEquals(dummyTyShow.getOverview(), tvResultsItem.getOverview());
+        assertEquals(dummyTyShow.getPosterPath(), tvResultsItem.getPosterPath());
+        assertEquals(dummyTyShow.getBackdropPath(), tvResultsItem.getBackdropPath());
+        assertEquals(dummyTyShow.getGenreIds(), tvResultsItem.getGenreIds());
+        assertEquals(dummyTyShow.getOriginCountry(), tvResultsItem.getOriginCountry());
+        assertEquals(dummyTyShow.getPopularity(), tvResultsItem.getPopularity(), dummyTyShow.getVoteAverage());
+        assertEquals(dummyTyShow.getVoteAverage(), tvResultsItem.getVoteAverage(), dummyTyShow.getVoteAverage());
+        assertEquals(dummyTyShow.getVoteCount(), tvResultsItem.getVoteCount());
+
+        viewModel.getDetailTv().observeForever(tvObserver);
+        verify(tvObserver).onChanged(dummyTyShow);
     }
 }

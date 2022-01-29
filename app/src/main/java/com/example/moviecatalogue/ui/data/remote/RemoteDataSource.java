@@ -12,6 +12,7 @@ import com.example.moviecatalogue.ui.data.response.MovieResultsItem;
 import com.example.moviecatalogue.ui.data.response.TvResultsItem;
 import com.example.moviecatalogue.ui.data.response.TvShowResponse;
 import com.example.moviecatalogue.ui.until.Const;
+import com.example.moviecatalogue.ui.until.EspressoIdlingResource;
 
 import java.util.List;
 
@@ -33,12 +34,14 @@ public class RemoteDataSource {
     }
 
     public void findMovies(LoadMovieCallback callback) {
+        EspressoIdlingResource.increment();
         ApiConfig.getApiservice().getMovieresponse(API_KEY).enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         callback.getMovies(response.body().getResults());
+                        EspressoIdlingResource.decrement();
                     }
                 }
             }
@@ -46,6 +49,7 @@ public class RemoteDataSource {
             @Override
             public void onFailure(Call<MovieResponse> call, Throwable t) {
                     Log.e(TAG, "onFailure: " + t.getMessage());
+                    EspressoIdlingResource.decrement();
             }
 
         });
@@ -53,13 +57,14 @@ public class RemoteDataSource {
     }
 
     public void findTvShow(LoadTvCallback callback){
+        EspressoIdlingResource.increment();
        ApiConfig.getApiservice().getTvResponse(API_KEY).enqueue(new Callback<TvShowResponse>() {
             @Override
             public void onResponse(Call<TvShowResponse> call, Response<TvShowResponse> response) {
                 if (response.isSuccessful()){
                     if (response.body() != null){
                         callback.getTvShow(response.body().getResults());
-
+                        EspressoIdlingResource.decrement();
                         Log.d(TAG, "onResponse: " + response.body().getResults());
                     }
                 }
@@ -68,6 +73,7 @@ public class RemoteDataSource {
             @Override
             public void onFailure(Call<TvShowResponse> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.getMessage());
+                EspressoIdlingResource.getEspressoIdResource();
             }
         });
     }

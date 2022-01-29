@@ -7,25 +7,45 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import com.example.moviecatalogue.R;
 import com.example.moviecatalogue.ui.data.MovieEntity;
+import com.example.moviecatalogue.ui.data.response.MovieResultsItem;
+import com.example.moviecatalogue.ui.data.response.TvResultsItem;
 import com.example.moviecatalogue.ui.until.DataDummy;
+import com.example.moviecatalogue.ui.until.EspressoIdlingResource;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import java.util.ArrayList;
 
 public class HomeActivityTest {
-    private ArrayList<MovieEntity> dummyMovie = DataDummy.generateDummyMovie();
-    private ArrayList<MovieEntity> dummyTv = DataDummy.generateDummyTv();
+    private ArrayList<MovieResultsItem> dummyMovie = DataDummy.generateDummyMovie();
+    private ArrayList<TvResultsItem> dummyTv = DataDummy.generateDummyTv();
+
+    @Rule
+    public ActivityScenarioRule activityRule = new ActivityScenarioRule<>(HomeActivity.class);
 
     /**
         Setup Preview
      */
-    @Rule
-    public ActivityScenarioRule activityRule = new ActivityScenarioRule<>(HomeActivity.class);
+
+    @Before
+    public void setup(){
+        ActivityScenario.launch(HomeActivity.class);
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.getEspressoIdResource());
+    }
+
+   @After
+   public void tearDown(){
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.getEspressoIdResource());
+   }
 
     /**
      Action on icon change language
@@ -69,15 +89,17 @@ public class HomeActivityTest {
      */
     @Test
     public void loadDetailMovie(){
-        onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        onView(withId(R.id.rv_movie)).perform(
+                RecyclerViewActions.actionOnItemAtPosition(0, click())
+        );
+        onView(withId(R.id.tvOriginalTitle)).check(matches(isDisplayed()));
+        onView(withId(R.id.tvOriginalTitle)).check(matches(withText(dummyMovie.get(0).getOriginalTitle())));
         onView(withId(R.id.tvTitleDetail)).check(matches(isDisplayed()));
         onView(withId(R.id.tvTitleDetail)).check(matches(withText(dummyMovie.get(0).getTitle())));
+        onView(withId(R.id.tvoriginal_lenguage)).check(matches(isDisplayed()));
+        onView(withId(R.id.tvoriginal_lenguage)).check(matches(withText(dummyMovie.get(0).getOriginalLanguage())));
         onView(withId(R.id.tvReleaseDetail)).check(matches(isDisplayed()));
         onView(withId(R.id.tvReleaseDetail)).check(matches(withText(dummyMovie.get(0).getReleaseDate())));
-        onView(withId(R.id.tvCategoryDetail)).check(matches(isDisplayed()));
-        onView(withId(R.id.tvCategoryDetail)).check(matches(withText(dummyMovie.get(0).getCategory())));
-        onView(withId(R.id.tvDurationDetail)).check(matches(isDisplayed()));
-        onView(withId(R.id.tvDurationDetail)).check(matches(withText(dummyMovie.get(0).getDuration())));
         onView(withId(R.id.tvDescDetail)).check(matches(isDisplayed()));
         onView(withId(R.id.tvDescDetail)).check(matches(withText(dummyMovie.get(0).getOverview())));
         onView(withId(R.id.img_share)).perform(click());
@@ -89,15 +111,17 @@ public class HomeActivityTest {
     @Test
     public void loadDetailTvShow(){
         onView(withText("TV SHOW")).perform(click());
-        onView(withId(R.id.rv_tvShow)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+        onView(withId(R.id.rv_tvShow)).perform(
+                RecyclerViewActions.actionOnItemAtPosition(0, click())
+        );
+        onView(withId(R.id.tvOriginalTitle)).check(matches(isDisplayed()));
+        onView(withId(R.id.tvOriginalTitle)).check(matches(withText(dummyTv.get(0).getOriginalName())));
         onView(withId(R.id.tvTitleDetail)).check(matches(isDisplayed()));
-        onView(withId(R.id.tvTitleDetail)).check(matches(withText(dummyTv.get(0).getTitle())));
+        onView(withId(R.id.tvTitleDetail)).check(matches(withText(dummyTv.get(0).getName())));
+        onView(withId(R.id.tvoriginal_lenguage)).check(matches(isDisplayed()));
+        onView(withId(R.id.tvoriginal_lenguage)).check(matches(withText(dummyTv.get(0).getOriginalLanguage())));
         onView(withId(R.id.tvReleaseDetail)).check(matches(isDisplayed()));
-        onView(withId(R.id.tvReleaseDetail)).check(matches(withText(dummyTv.get(0).getReleaseDate())));
-        onView(withId(R.id.tvCategoryDetail)).check(matches(isDisplayed()));
-        onView(withId(R.id.tvCategoryDetail)).check(matches(withText(dummyTv.get(0).getCategory())));
-        onView(withId(R.id.tvDurationDetail)).check(matches(isDisplayed()));
-        onView(withId(R.id.tvDurationDetail)).check(matches(withText(dummyTv.get(0).getDuration())));
+        onView(withId(R.id.tvReleaseDetail)).check(matches(withText(dummyTv.get(0).getFirstAirDate())));
         onView(withId(R.id.tvDescDetail)).check(matches(isDisplayed()));
         onView(withId(R.id.tvDescDetail)).check(matches(withText(dummyTv.get(0).getOverview())));
         onView(withId(R.id.img_share)).perform(click());

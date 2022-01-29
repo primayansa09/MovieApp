@@ -21,6 +21,7 @@ import com.example.moviecatalogue.ui.until.ViewModelFactory;
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_MODEL = "extra_model";
+    public static final String EXTRA_MODEL_TV = "extra_model_tv";
     public static final String TAG = "DetailActivity";
 
     private ActivityDetailBinding activityDetailBinding;
@@ -44,8 +45,8 @@ public class DetailActivity extends AppCompatActivity {
         Bundle extra = getIntent().getExtras();
         Log.e(TAG, "Data: " + extra.toString());
         if (extra != null){
-            int idData = extra.getInt(EXTRA_MODEL, -1);
-            int tvId = extra.getInt(EXTRA_MODEL, -1);
+            int idData = extra.getInt(EXTRA_MODEL);
+            int tvId = extra.getInt(EXTRA_MODEL_TV);
             if (getIntent().hasExtra(EXTRA_MODEL)) {
                 activityDetailBinding.progreeBarDetail.setVisibility(View.VISIBLE);
                 activityDetailBinding.content.setVisibility(View.VISIBLE);
@@ -57,7 +58,7 @@ public class DetailActivity extends AppCompatActivity {
 
                     detailMovie(movies);
                 });
-            }else if (getIntent().hasExtra(EXTRA_MODEL)){
+            }else if (getIntent().hasExtra(EXTRA_MODEL_TV)){
                 activityDetailBinding.progreeBarDetail.setVisibility(View.VISIBLE);
                 activityDetailBinding.content.setVisibility(View.VISIBLE);
 
@@ -116,7 +117,7 @@ public class DetailActivity extends AppCompatActivity {
             share.setAction(Intent.ACTION_SEND);
             share.putExtra(Intent.EXTRA_TEXT,activityDetailBinding.detailContent.tvTitleDetail.getText().toString() +"\n"+
                     activityDetailBinding.detailContent.tvReleaseDetail.getText().toString() +"\n"+ activityDetailBinding.detailContent.tvoriginalLenguage.getText().toString()+"\n"+
-                    activityDetailBinding.detailContent.tvDescDetail.getText().toString());
+                    activityDetailBinding.detailContent.tvDescDetail.getText().toString() +"\n"+ activityDetailBinding.detailContent.rantingBar.getRating());
             share.setType("text/plain");
 
             Intent shareIntent = Intent.createChooser(share, "Bagikan Film ini Sekarang");
