@@ -88,5 +88,24 @@ public class MovieRepositoryTest {
 
     @Test
     public void getTvDetail() {
+        doAnswer(invocation -> {
+            ((RemoteDataSource.LoadTvCallback) invocation.getArguments()[0])
+                    .getTvShow(tvShowResponse);
+            return null;
+        }).when(remote).findTvShow(any(RemoteDataSource.LoadTvCallback.class));
+        TvResultsItem tvResultsItems = LiveDataTestUtil.getValue(movieRepository.getTvDetail(tvShowId));
+        verify(remote).findTvShow(any(RemoteDataSource.LoadTvCallback.class));
+        assertNotNull(tvResultsItems);
+        assertEquals(tvShowResponse.get(0).getVoteAverage(), tvResultsItems.getVoteAverage(), movieResponse.get(0).getVoteAverage());
+        assertEquals(tvShowResponse.get(0).getPopularity(), tvResultsItems.getPopularity(), movieResponse.get(0).getPopularity());
+        assertEquals(tvShowResponse.get(0).getOriginalLanguage(), tvResultsItems.getOriginalLanguage());
+        assertEquals(tvShowResponse.get(0).getId(), tvResultsItems.getId());
+        assertEquals(tvShowResponse.get(0).getVoteCount(), tvResultsItems.getVoteCount());
+        assertEquals(tvShowResponse.get(0).getOverview(), tvResultsItems.getOverview());
+        assertEquals(tvShowResponse.get(0).getBackdropPath(), tvResultsItems.getBackdropPath());
+        assertEquals(tvShowResponse.get(0).getFirstAirDate(), tvResultsItems.getFirstAirDate());
+        assertEquals(tvShowResponse.get(0).getOriginalName(), tvResultsItems.getOriginalName());
+        assertEquals(tvShowResponse.get(0).getName(), tvResultsItems.getName());
+        assertEquals(tvShowResponse.get(0).getPosterPath(), tvResultsItems.getPosterPath());
     }
 }

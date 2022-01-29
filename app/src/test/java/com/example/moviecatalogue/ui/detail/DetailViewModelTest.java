@@ -90,8 +90,6 @@ public class DetailViewModelTest {
         assertEquals(dummyTyShow.getOverview(), tvResultsItem.getOverview());
         assertEquals(dummyTyShow.getPosterPath(), tvResultsItem.getPosterPath());
         assertEquals(dummyTyShow.getBackdropPath(), tvResultsItem.getBackdropPath());
-        assertEquals(dummyTyShow.getGenreIds(), tvResultsItem.getGenreIds());
-        assertEquals(dummyTyShow.getOriginCountry(), tvResultsItem.getOriginCountry());
         assertEquals(dummyTyShow.getPopularity(), tvResultsItem.getPopularity(), dummyTyShow.getVoteAverage());
         assertEquals(dummyTyShow.getVoteAverage(), tvResultsItem.getVoteAverage(), dummyTyShow.getVoteAverage());
         assertEquals(dummyTyShow.getVoteCount(), tvResultsItem.getVoteCount());

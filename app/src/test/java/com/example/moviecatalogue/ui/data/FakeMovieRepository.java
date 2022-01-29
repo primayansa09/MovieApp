@@ -1,7 +1,5 @@
 package com.example.moviecatalogue.ui.data;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -20,19 +18,8 @@ public class FakeMovieRepository {
    private MovieResultsItem moviesDetail;
    private TvResultsItem tvShowDetail;
 
-   private static final String TAG = "MovieRepository";
-
    public FakeMovieRepository(RemoteDataSource remoteDataSource) {
       this.remoteDataSource = remoteDataSource;
-   }
-
-   public static MovieRepository getInstance(RemoteDataSource remoteData) {
-      if (INSTANCE == null) {
-         synchronized (MovieRepository.class) {
-            INSTANCE = new MovieRepository(remoteData);
-         }
-      }
-      return INSTANCE;
    }
 
 
@@ -57,7 +44,7 @@ public class FakeMovieRepository {
             movieList.add(item);
          }
          movieResult.postValue(movieList);
-         Log.d(TAG, "getAllMovie: " + movieList);
+
       });
       return movieResult;
    }
