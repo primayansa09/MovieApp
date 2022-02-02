@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData;
 
 import com.example.moviecatalogue.ui.data.response.MovieResultsItem;
 import com.example.moviecatalogue.ui.data.response.TvResultsItem;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public interface MovieTvDataSource {

@@ -29,7 +29,6 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
 
         activityDetailBinding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(activityDetailBinding.getRoot());
@@ -44,7 +43,7 @@ public class DetailActivity extends AppCompatActivity {
 
         Bundle extra = getIntent().getExtras();
         Log.e(TAG, "Data: " + extra.toString());
-        if (extra != null){
+
             int idData = extra.getInt(EXTRA_MODEL);
             int tvId = extra.getInt(EXTRA_MODEL_TV);
             if (getIntent().hasExtra(EXTRA_MODEL)) {
@@ -70,11 +69,9 @@ public class DetailActivity extends AppCompatActivity {
                     detailTvShow(tv);
                 });
             }
-        }
 
-        activityDetailBinding.toolbarDetail.imgBackDetail.setOnClickListener(v -> {
-            finish();
-        });
+
+        activityDetailBinding.toolbarDetail.imgBackDetail.setOnClickListener(v -> finish());
 
         sahreOnClik();
 
@@ -100,6 +97,7 @@ public class DetailActivity extends AppCompatActivity {
         activityDetailBinding.detailContent.tvOriginalTitle.setText(tvResultsItem.getOriginalName());
         activityDetailBinding.detailContent.tvTitleDetail.setText(tvResultsItem.getName());
         activityDetailBinding.detailContent.tvDescDetail.setText(tvResultsItem.getOverview());
+        activityDetailBinding.detailContent.tvReleaseDetail.setText(tvResultsItem.getFirstAirDate());
         activityDetailBinding.detailContent.tvoriginalLenguage.setText(tvResultsItem.getOriginalLanguage());
         activityDetailBinding.detailContent.rantingBar.setRating(tvResultsItem.getVoteAverage()/2);
 

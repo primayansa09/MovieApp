@@ -15,9 +15,6 @@ public class TvResultsItem {
 	private String originalLanguage;
 	private List<Integer> genreIds1;
 
-	@SerializedName("genre_ids")
-	private List<Integer> genreIds;
-
 	@SerializedName("poster_path")
 	private String posterPath;
 
@@ -70,10 +67,6 @@ public class TvResultsItem {
 
 	public String getOriginalLanguage() {
 		return originalLanguage;
-	}
-
-	public List<Integer> getGenreIds() {
-		return genreIds;
 	}
 
 	public String getPosterPath() {

@@ -1,7 +1,6 @@
 package com.example.moviecatalogue.ui.home;
 
 import android.content.Context;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
@@ -45,6 +44,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return TAB_TITLE.length;
     }
 }

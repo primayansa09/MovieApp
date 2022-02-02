@@ -11,7 +11,7 @@ public class DetailViewModel extends ViewModel {
     private int dataId;
     private int dataTv;
 
-    private MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
 
     public void setSelectedMovie(int movieId){
         this.dataId = movieId;

@@ -18,4 +18,6 @@
     <string name="popularity">Popularity</string>
     <string name="vote_count">Vote Count</string>
     <string name="original_lenguage">en</string>
+    <string name="poster">Image</string>
+    <string name="nonton_skuy">Nonton Skuy</string>
 </resources>

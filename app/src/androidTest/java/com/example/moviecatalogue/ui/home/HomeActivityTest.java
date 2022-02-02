@@ -7,13 +7,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import com.example.moviecatalogue.R;
-import com.example.moviecatalogue.ui.data.MovieEntity;
 import com.example.moviecatalogue.ui.data.response.MovieResultsItem;
 import com.example.moviecatalogue.ui.data.response.TvResultsItem;
 import com.example.moviecatalogue.ui.until.DataDummy;
@@ -51,7 +49,7 @@ public class HomeActivityTest {
      Action on icon change language
      */
     @Test
-    public void clickCahngeLanguage(){
+    public void clickChangeLanguage(){
         onView(withId(R.id.img_setting)).perform(click());
         onView(withId(R.id.lyt_bahasa)).perform(click());
     }
@@ -89,9 +87,7 @@ public class HomeActivityTest {
      */
     @Test
     public void loadDetailMovie(){
-        onView(withId(R.id.rv_movie)).perform(
-                RecyclerViewActions.actionOnItemAtPosition(0, click())
-        );
+        onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         onView(withId(R.id.tvOriginalTitle)).check(matches(isDisplayed()));
         onView(withId(R.id.tvOriginalTitle)).check(matches(withText(dummyMovie.get(0).getOriginalTitle())));
         onView(withId(R.id.tvTitleDetail)).check(matches(isDisplayed()));
@@ -102,6 +98,7 @@ public class HomeActivityTest {
         onView(withId(R.id.tvReleaseDetail)).check(matches(withText(dummyMovie.get(0).getReleaseDate())));
         onView(withId(R.id.tvDescDetail)).check(matches(isDisplayed()));
         onView(withId(R.id.tvDescDetail)).check(matches(withText(dummyMovie.get(0).getOverview())));
+        onView(withId(R.id.rantingBar)).check(matches(isDisplayed()));
         onView(withId(R.id.img_share)).perform(click());
     }
 
@@ -111,9 +108,7 @@ public class HomeActivityTest {
     @Test
     public void loadDetailTvShow(){
         onView(withText("TV SHOW")).perform(click());
-        onView(withId(R.id.rv_tvShow)).perform(
-                RecyclerViewActions.actionOnItemAtPosition(0, click())
-        );
+        onView(withId(R.id.rv_tvShow)).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
         onView(withId(R.id.tvOriginalTitle)).check(matches(isDisplayed()));
         onView(withId(R.id.tvOriginalTitle)).check(matches(withText(dummyTv.get(0).getOriginalName())));
         onView(withId(R.id.tvTitleDetail)).check(matches(isDisplayed()));
@@ -122,8 +117,6 @@ public class HomeActivityTest {
         onView(withId(R.id.tvoriginal_lenguage)).check(matches(withText(dummyTv.get(0).getOriginalLanguage())));
         onView(withId(R.id.tvReleaseDetail)).check(matches(isDisplayed()));
         onView(withId(R.id.tvReleaseDetail)).check(matches(withText(dummyTv.get(0).getFirstAirDate())));
-        onView(withId(R.id.tvDescDetail)).check(matches(isDisplayed()));
-        onView(withId(R.id.tvDescDetail)).check(matches(withText(dummyTv.get(0).getOverview())));
         onView(withId(R.id.img_share)).perform(click());
     }
 

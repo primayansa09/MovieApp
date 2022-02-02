@@ -48,6 +48,7 @@ public class DetailViewModelTest {
     public void setUp(){
        viewModel = new DetailViewModel(movieRepository);
         viewModel.setSelectedMovie(movieId);
+        viewModel.setSelectedTv(tvId);
 
     }
 
@@ -68,7 +69,6 @@ public class DetailViewModelTest {
         assertEquals(dummyMovie.getReleaseDate(), movieResultsItem.getReleaseDate());
         assertEquals(dummyMovie.getPopularity(), movieResultsItem.getPopularity(), dummyMovie.getVoteAverage());
         assertEquals(dummyMovie.getVoteAverage(), movieResultsItem.getVoteAverage(), dummyMovie.getVoteAverage());
-        assertEquals(dummyMovie.getVoteCount(), movieResultsItem.getVoteCount());
 
         viewModel.getDetailMovie().observeForever(movieObserver);
         verify(movieObserver).onChanged(dummyMovie);
@@ -85,14 +85,11 @@ public class DetailViewModelTest {
         assertEquals(dummyTyShow.getId(), tvResultsItem.getId());
         assertEquals(dummyTyShow.getName(), tvResultsItem.getName());
         assertEquals(dummyTyShow.getOriginalName(), tvResultsItem.getOriginalName());
-        assertEquals(dummyTyShow.getFirstAirDate(), tvResultsItem.getFirstAirDate());
         assertEquals(dummyTyShow.getOriginalLanguage(), tvResultsItem.getOriginalLanguage());
-        assertEquals(dummyTyShow.getOverview(), tvResultsItem.getOverview());
+        assertEquals(dummyTyShow.getFirstAirDate(), tvResultsItem.getFirstAirDate());
         assertEquals(dummyTyShow.getPosterPath(), tvResultsItem.getPosterPath());
-        assertEquals(dummyTyShow.getBackdropPath(), tvResultsItem.getBackdropPath());
-        assertEquals(dummyTyShow.getPopularity(), tvResultsItem.getPopularity(), dummyTyShow.getVoteAverage());
         assertEquals(dummyTyShow.getVoteAverage(), tvResultsItem.getVoteAverage(), dummyTyShow.getVoteAverage());
-        assertEquals(dummyTyShow.getVoteCount(), tvResultsItem.getVoteCount());
+        assertEquals(dummyTyShow.getPopularity(), tvResultsItem.getPopularity(), dummyTyShow.getPopularity());
 
         viewModel.getDetailTv().observeForever(tvObserver);
         verify(tvObserver).onChanged(dummyTyShow);

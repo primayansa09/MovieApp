@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/imgDetail"
-        android:layout_width="180dp"
+        android:layout_width="170dp"
         android:layout_height="250dp"
         android:layout_margin="16dp"
         android:src="@drawable/ic_broken_image"
@@ -46,18 +46,17 @@
             tools:text="@string/title"/>
 
         <TextView
-            android:id="@+id/tvoriginal_lenguage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="@string/original_language" />
-
-
-        <TextView
             android:id="@+id/tvReleaseDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
             tools:text="@string/release_date"/>
+
+        <TextView
+            android:id="@+id/tvoriginal_lenguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/original_language" />
 
     </LinearLayout>
 
@@ -70,9 +69,9 @@
         android:stepSize="0.1"
         android:progressBackgroundTint="@color/placeholder"
         android:progressTint="@color/yellow"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/img_share"
         app:layout_constraintTop_toBottomOf="@+id/lyt_title"
         app:layout_constraintStart_toEndOf="@+id/imgDetail"/>

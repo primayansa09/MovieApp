@@ -1,21 +1,16 @@
 package com.example.moviecatalogue.ui.data.remote;
 
 import static com.example.moviecatalogue.ui.until.Const.API_KEY;
-import static com.example.moviecatalogue.ui.until.Const.MOVIE_ID;
-import static com.example.moviecatalogue.ui.until.Const.TVSHOW_ID;
 
 import android.util.Log;
-
 import com.example.moviecatalogue.ui.api.ApiConfig;
 import com.example.moviecatalogue.ui.data.response.MovieResponse;
 import com.example.moviecatalogue.ui.data.response.MovieResultsItem;
 import com.example.moviecatalogue.ui.data.response.TvResultsItem;
 import com.example.moviecatalogue.ui.data.response.TvShowResponse;
-import com.example.moviecatalogue.ui.until.Const;
 import com.example.moviecatalogue.ui.until.EspressoIdlingResource;
 
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,14 +52,14 @@ public class RemoteDataSource {
     }
 
     public void findTvShow(LoadTvCallback callback){
-        EspressoIdlingResource.increment();
+       EspressoIdlingResource.increment();
        ApiConfig.getApiservice().getTvResponse(API_KEY).enqueue(new Callback<TvShowResponse>() {
             @Override
             public void onResponse(Call<TvShowResponse> call, Response<TvShowResponse> response) {
                 if (response.isSuccessful()){
                     if (response.body() != null){
                         callback.getTvShow(response.body().getResults());
-                        EspressoIdlingResource.decrement();
+                       EspressoIdlingResource.decrement();
                         Log.d(TAG, "onResponse: " + response.body().getResults());
                     }
                 }
@@ -73,7 +68,7 @@ public class RemoteDataSource {
             @Override
             public void onFailure(Call<TvShowResponse> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.getMessage());
-                EspressoIdlingResource.getEspressoIdResource();
+               EspressoIdlingResource.decrement();
             }
         });
     }
