@@ -41,7 +41,6 @@ public class DetailViewModel extends ViewModel {
                     MovieResultsItem movieResultsItem = movieResource.data;
                     final boolean newState = !movieResultsItem.isFavorite();
                     movieRepository.setMovieFavorite(movieResultsItem, newState);
-
                 }
     }
 

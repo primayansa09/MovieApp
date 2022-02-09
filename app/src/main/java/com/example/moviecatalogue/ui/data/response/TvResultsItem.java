@@ -1,6 +1,7 @@
 package com.example.moviecatalogue.ui.data.response;
 
 import androidx.annotation.NonNull;
+import androidx.paging.PagedList;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -23,15 +24,9 @@ public class TvResultsItem {
 	@ColumnInfo(name = "originalLanguage")
 	private String originalLanguage;
 
-	//private List<Integer> genreIds1;
-
 	@SerializedName("poster_path")
 	@ColumnInfo(name = "posterPath")
 	private String posterPath;
-
-	//@SerializedName("origin_country")
-	//@ColumnInfo(name = "originCountry")
-	//private List<String> originCountry;
 
 	@SerializedName("backdrop_path")
 	@ColumnInfo(name = "backdropPath")
@@ -94,10 +89,6 @@ public class TvResultsItem {
 	public String getPosterPath() {
 		return posterPath;
 	}
-
-	//public List<String> getOriginCountry() {
-	//	return originCountry;
-	//}
 
 	public String getBackdropPath() {
 		return backdropPath;

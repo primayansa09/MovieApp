@@ -1,5 +1,4 @@
 package com.example.moviecatalogue.ui.data.remote;
-
 import static com.example.moviecatalogue.ui.until.Const.API_KEY;
 import android.util.Log;
 import androidx.lifecycle.LiveData;
@@ -57,7 +56,7 @@ public class RemoteDataSource {
     }
 
     public LiveData<ApiResponse<List<TvResultsItem>>> findTvShow(){
-       EspressoIdlingResource.increment();
+        EspressoIdlingResource.increment();
         MutableLiveData<ApiResponse<List<TvResultsItem>>> resultTv = new MutableLiveData<>();
        ApiConfig.getApiservice().getTvResponse(API_KEY).enqueue(new Callback<TvShowResponse>() {
             @Override
@@ -66,7 +65,7 @@ public class RemoteDataSource {
                     List result = response.body().getResults();
                     if (response.body() != null){
                         resultTv.postValue(ApiResponse.success(result));
-                       EspressoIdlingResource.decrement();
+                        EspressoIdlingResource.decrement();
                         Log.d(TAG, "onResponse: " + response.body().getResults());
                     }
                 }
@@ -75,7 +74,7 @@ public class RemoteDataSource {
             @Override
             public void onFailure(Call<TvShowResponse> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.getMessage());
-               EspressoIdlingResource.decrement();
+                EspressoIdlingResource.decrement();
             }
         });
        return resultTv;

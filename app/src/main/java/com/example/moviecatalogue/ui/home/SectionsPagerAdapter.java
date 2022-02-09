@@ -14,7 +14,6 @@ public class SectionsPagerAdapter extends FragmentStateAdapter {
         super(activity);
     }
 
-
     @NonNull
     @Override
     public Fragment createFragment(int position) {

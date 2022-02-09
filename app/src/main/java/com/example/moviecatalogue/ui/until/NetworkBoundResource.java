@@ -2,7 +2,6 @@ package com.example.moviecatalogue.ui.until;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
-
 import com.example.moviecatalogue.ui.data.remote.ApiResponse;
 import com.example.moviecatalogue.ui.vo.Resource;
 

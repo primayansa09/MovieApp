@@ -8,7 +8,7 @@
     <string name="tvShow">Tv Show</string>
     <string name="favorite_movie">Favorite Movie</string>
     <string name="favorite_tv">Favorite Tv</string>
-    <string name="share_text">Segera Pesan Tiket Film</string>
+    <string name="share_text">Bagikan Film ini Sekarang"</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="setting">Setting</string>
@@ -25,8 +25,6 @@
     <string name="nonton_skuy">Nonton Skuy</string>
     <string name="image">Image</string>
     <string name="favorite">Favorite</string>
-    <string name="message_add_favorite">Berhasil ditambahkan ke favorite</string>
-    <string name="message_remove_favorite">Favorite berhasil dihapus</string>
     <string name="undo_delete">Cancel to delete?</string>
     <string name="message_ok">Ok</string>
     <string name="error">Terjadi kesalahan</string>

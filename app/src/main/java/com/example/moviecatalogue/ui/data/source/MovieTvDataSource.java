@@ -2,7 +2,6 @@ package com.example.moviecatalogue.ui.data.source;
 
 import androidx.lifecycle.LiveData;
 import androidx.paging.PagedList;
-
 import com.example.moviecatalogue.ui.data.response.MovieResultsItem;
 import com.example.moviecatalogue.ui.data.response.TvResultsItem;
 import com.example.moviecatalogue.ui.vo.Resource;

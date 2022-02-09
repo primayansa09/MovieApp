@@ -101,15 +101,11 @@ public class DetailActivity extends AppCompatActivity {
                 if (!statusFavorite){
                     viewModel.setFavoriteMovie();
                     setFavorite(true);
-                    Toast.makeText(this, getString(R.string.message_add_favorite), Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(this, getString(R.string.message_remove_favorite), Toast.LENGTH_SHORT).show();
                 }
 
                 if (!statusFavorite){
                     viewModel.setFavoriteTvShow();
                     setFavorite(true);
-                    Toast.makeText(this, getString(R.string.message_add_favorite), Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -161,7 +157,7 @@ public class DetailActivity extends AppCompatActivity {
                     activityDetailBinding.detailContent.tvDescDetail.getText().toString() +"\n"+ activityDetailBinding.detailContent.rantingBar.getRating());
             share.setType("text/plain");
 
-            Intent shareIntent = Intent.createChooser(share, "Bagikan Film ini Sekarang");
+            Intent shareIntent = Intent.createChooser(share, getString(R.string.share_text));
             startActivity(shareIntent);
         });
     }

@@ -1,7 +1,4 @@
 package com.example.moviecatalogue.ui.detail;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -48,7 +45,6 @@ public class DetailViewModelTest {
        viewModel = new DetailViewModel(movieRepository);
         viewModel.setSelectedMovie(movieId);
         viewModel.setSelectedTv(tvId);
-
     }
 
     @Test

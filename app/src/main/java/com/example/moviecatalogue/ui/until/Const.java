@@ -2,8 +2,6 @@ package com.example.moviecatalogue.ui.until;
 
 public class Const {
     //URL
-    public static final String MOVIE_ID = "634649";
-    public static final String TVSHOW_ID = "85552";
     public static final String URL_MOVIE = "discover/movie";
     public static final String URL_TVSHOW = "discover/tv";
     public static final String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500";

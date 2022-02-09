@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.example.moviecatalogue.R;
 import com.example.moviecatalogue.databinding.FragmentMovieBinding;
 import com.example.moviecatalogue.ui.until.ViewModelFactory;
 
@@ -56,7 +57,7 @@ public class MovieFragment extends Fragment {
                             break;
                         case ERROR:
                             fragmentMovieBinding.progressBarMovie.setVisibility(View.GONE);
-                            Toast.makeText(getContext(), "Terjadi kesalahan", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), getString(R.string.error), Toast.LENGTH_SHORT).show();
                             break;
                     }
 

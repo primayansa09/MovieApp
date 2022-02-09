@@ -53,13 +53,24 @@ public class MovieRepositoryTest {
         verify(local).getAllMovie();
         assertNotNull(movieEntites.data);
         assertEquals(movieResponse.size(), movieEntites.data.size());
+    }
 
+    @Test
+    public void getAllTvShow() {
+        DataSource.Factory<Integer, TvResultsItem> dataSourceTvFactory = mock(DataSource.Factory.class);
+        when(local.getAllTv()).thenReturn(dataSourceTvFactory);
+        movieRepository.getAllTvShow();
+
+        Resource<PagedList<TvResultsItem>> tvEntities = Resource.success(PagedListUtil.mockPagedList(DataDummy.generateDummyTv()));
+        verify(local).getAllTv();
+        assertNotNull(tvEntities.data);
+        assertEquals(tvShowResponse.size(), tvEntities.data.size());
     }
 
     @Test
     public void getMovieById() {
         MutableLiveData<MovieResultsItem> dummyMovieById = new MutableLiveData<>();
-        dummyMovieById.setValue(DataDummy.generateDummyMovie().get(movieId));
+        dummyMovieById.setValue(DataDummy.generateDummyMovie().get(0));
         when(local.getMovieById(movieId)).thenReturn(dummyMovieById);
 
         MovieResultsItem movieEntity = LiveDataTestUtil.getValue(movieRepository.getMovieById(movieId)).data;
@@ -68,6 +79,7 @@ public class MovieRepositoryTest {
         assertEquals(movieResponse.get(0).getTitle(), movieEntity.getTitle());
         assertEquals(movieResponse.get(0).getOriginalTitle(), movieEntity.getOriginalTitle());
         assertEquals(movieResponse.get(0).getOriginalLanguage(), movieEntity.getOriginalLanguage());
+        assertEquals(movieResponse.get(0).getReleaseDate(), movieEntity.getReleaseDate());
         assertEquals(movieResponse.get(0).getOverview(), movieEntity.getOverview());
         assertEquals(movieResponse.get(0).getId(), movieEntity.getId());
         assertEquals(movieResponse.get(0).getBackdropPath(), movieEntity.getBackdropPath());
@@ -75,44 +87,28 @@ public class MovieRepositoryTest {
         assertEquals(movieResponse.get(0).getVoteAverage(), movieEntity.getVoteAverage(), movieResponse.get(0).getVoteAverage());
         assertEquals(movieResponse.get(0).getPopularity(), movieEntity.getPopularity(), movieResponse.get(0).getPopularity());
         assertEquals(movieResponse.get(0).getVoteCount(), movieEntity.getVoteCount());
-
-
     }
 
     @Test
-    public void getAllTvShow() {
-        DataSource.Factory<Integer, TvResultsItem> dataSourceFactory = mock(DataSource.Factory.class);
-        when(local.getAllTv()).thenReturn(dataSourceFactory);
-        movieRepository.getAllTvShow();
-
-        Resource<PagedList<TvResultsItem>> movieEntites = Resource.success(PagedListUtil.mockPagedList(DataDummy.generateDummyTv()));
-        verify(local).getAllMovie();
-        assertNotNull(movieEntites.data);
-        assertEquals(tvShowResponse.size(), movieEntites.data.size());
-    }
-
-    @Test
-    public void getTvDetail() {
-        MutableLiveData<TvResultsItem> dummyTvDetail = new MutableLiveData<>();
-        dummyTvDetail.setValue(DataDummy.generateDummyTv().get(tvShowId));
-        when(local.getTvById(tvShowId)).thenReturn(dummyTvDetail);
+    public void getTvById() {
+        MutableLiveData<TvResultsItem> dummyTvById = new MutableLiveData<>();
+        dummyTvById.setValue(DataDummy.generateDummyTv().get(0));
+        when(local.getTvById(tvShowId)).thenReturn(dummyTvById);
 
         TvResultsItem tvShowEntity = LiveDataTestUtil.getValue(movieRepository.getTvById(tvShowId)).data;
-        verify(local.getTvById(tvShowId));
+        verify(local).getTvById(tvShowId);
         assertNotNull(tvShowEntity);
-        assertEquals(tvShowResponse.get(0).getName(), tvShowEntity.getName());
-        assertEquals(tvShowResponse.get(0).getOriginalName(), tvShowEntity.getOriginalName());
-        assertEquals(tvShowResponse.get(0).getFirstAirDate(), tvShowEntity.getFirstAirDate());
         assertEquals(tvShowResponse.get(0).getId(), tvShowEntity.getId());
+        assertEquals(tvShowResponse.get(0).getOriginalName(), tvShowEntity.getOriginalName());
+        assertEquals(tvShowResponse.get(0).getName(), tvShowEntity.getName());
+        assertEquals(tvShowResponse.get(0).getFirstAirDate(), tvShowEntity.getFirstAirDate());
         assertEquals(tvShowResponse.get(0).getOriginalLanguage(), tvShowEntity.getOriginalLanguage());
-        assertEquals(tvShowResponse.get(0).getPopularity(), tvShowEntity.getPopularity(), tvShowResponse.get(0).getPopularity());
-        assertEquals(tvShowResponse.get(0).getVoteCount(), tvShowEntity.getVoteCount());
-        assertEquals(tvShowResponse.get(0).getVoteAverage(), tvShowEntity.getVoteAverage(), tvShowResponse.get(0).getVoteAverage());
-        assertEquals(tvShowResponse.get(0).getPosterPath(), tvShowEntity.getPosterPath());
+        assertEquals(tvShowResponse.get(0).getOverview(), tvShowEntity.getOverview());
         assertEquals(tvShowResponse.get(0).getBackdropPath(), tvShowEntity.getBackdropPath());
-
-
-
+        assertEquals(tvShowResponse.get(0).getPosterPath(), tvShowEntity.getPosterPath());
+        assertEquals(tvShowResponse.get(0).getVoteCount(), tvShowEntity.getVoteCount());
+        assertEquals(tvShowResponse.get(0).getPopularity(), tvShowEntity.getPopularity(), tvShowResponse.get(0).getPopularity());
+        assertEquals(tvShowResponse.get(0).getVoteAverage(), tvShowEntity.getVoteAverage(), tvShowResponse.get(0).getVoteAverage());
     }
 
     @Test

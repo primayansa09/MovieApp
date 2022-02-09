@@ -1,7 +1,6 @@
 package com.example.moviecatalogue.ui.until;
 
 import android.content.Context;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;

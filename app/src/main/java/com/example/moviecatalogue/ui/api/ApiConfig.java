@@ -1,7 +1,6 @@
 package com.example.moviecatalogue.ui.api;
 
 import com.example.moviecatalogue.ui.until.Const;
-
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;

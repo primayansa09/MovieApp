@@ -2,11 +2,6 @@ package com.example.moviecatalogue.ui.until;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
-
-import com.example.moviecatalogue.ui.data.response.MovieResultsItem;
-import com.example.moviecatalogue.ui.data.response.TvResultsItem;
-import com.example.moviecatalogue.ui.vo.Resource;
-
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 

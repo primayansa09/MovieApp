@@ -14,7 +14,6 @@ import com.example.moviecatalogue.ui.local.LocalDataSource;
 import com.example.moviecatalogue.ui.until.AppExecutors;
 import com.example.moviecatalogue.ui.until.NetworkBoundResource;
 import com.example.moviecatalogue.ui.vo.Resource;
-
 import java.util.ArrayList;
 import java.util.List;
 
