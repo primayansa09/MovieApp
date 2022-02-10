@@ -1,7 +1,6 @@
 package com.example.moviecatalogue.ui.data.response;
 
 import androidx.annotation.NonNull;
-import androidx.paging.PagedList;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

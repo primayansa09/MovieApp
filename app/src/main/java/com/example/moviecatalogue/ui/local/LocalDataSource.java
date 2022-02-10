@@ -5,7 +5,6 @@ import androidx.paging.DataSource;
 import com.example.moviecatalogue.ui.data.response.MovieResultsItem;
 import com.example.moviecatalogue.ui.data.response.TvResultsItem;
 import com.example.moviecatalogue.ui.local.room.MovieTvDao;
-
 import java.util.List;
 
 public class LocalDataSource {

@@ -58,7 +58,7 @@ public class RemoteDataSource {
     public LiveData<ApiResponse<List<TvResultsItem>>> findTvShow(){
         EspressoIdlingResource.increment();
         MutableLiveData<ApiResponse<List<TvResultsItem>>> resultTv = new MutableLiveData<>();
-       ApiConfig.getApiservice().getTvResponse(API_KEY).enqueue(new Callback<TvShowResponse>() {
+        ApiConfig.getApiservice().getTvResponse(API_KEY).enqueue(new Callback<TvShowResponse>() {
             @Override
             public void onResponse(Call<TvShowResponse> call, Response<TvShowResponse> response) {
                 if (response.isSuccessful()){

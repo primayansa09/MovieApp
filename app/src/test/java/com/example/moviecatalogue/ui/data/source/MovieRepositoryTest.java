@@ -119,6 +119,7 @@ public class MovieRepositoryTest {
 
         Resource<PagedList<MovieResultsItem>> movieEntities = Resource.success(PagedListUtil.mockPagedList(DataDummy.generateDummyMovie()));
         verify(local).getFavMovies();
+        assertNotNull(movieEntities.data);
         assertEquals(movieResponse.size(), movieEntities.data.size());
     }
 
@@ -130,6 +131,7 @@ public class MovieRepositoryTest {
 
         Resource<PagedList<TvResultsItem>> tvEntities = Resource.success(PagedListUtil.mockPagedList(DataDummy.generateDummyTv()));
         verify(local).getFavTv();
+        assertNotNull(tvEntities.data);
         assertEquals(movieResponse.size(), tvEntities.data.size());
     }
 }

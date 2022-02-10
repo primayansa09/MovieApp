@@ -1,4 +1,6 @@
 package com.example.moviecatalogue.ui.detail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -53,7 +55,20 @@ public class DetailViewModelTest {
         MutableLiveData<Resource<MovieResultsItem>> movies = new MutableLiveData<>();
         movies.setValue(movieDetail);
         when(movieRepository.getMovieById(movieId)).thenReturn(movies);
-
+        assertNotNull(movies);
+        if (movieDetail.data != null){
+            assertEquals(dummyMovie.getId(), movieDetail.data.getId());
+            assertEquals(dummyMovie.getOriginalTitle(), movieDetail.data.getOriginalTitle());
+            assertEquals(dummyMovie.getTitle(), movieDetail.data.getTitle());
+            assertEquals(dummyMovie.getOriginalLanguage(), movieDetail.data.getOriginalLanguage());
+            assertEquals(dummyMovie.getReleaseDate(), movieDetail.data.getReleaseDate());
+            assertEquals(dummyMovie.getOverview(), movieDetail.data.getOverview());
+            assertEquals(dummyMovie.getVoteAverage(), movieDetail.data.getVoteAverage(), dummyMovie.getVoteAverage());
+            assertEquals(dummyMovie.getPopularity(), movieDetail.data.getPopularity(), dummyMovie.getPopularity());
+            assertEquals(dummyMovie.getPosterPath(), movieDetail.data.getPosterPath());
+            assertEquals(dummyMovie.getBackdropPath(), movieDetail.data.getBackdropPath());
+            assertEquals(dummyMovie.getVoteCount(), movieDetail.data.getVoteCount());
+        }
         viewModel.movieDetail.observeForever(movieObserver);
         verify(movieObserver).onChanged(movieDetail);
     }
@@ -64,7 +79,20 @@ public class DetailViewModelTest {
         MutableLiveData<Resource<TvResultsItem>> tvShow = new MutableLiveData<>();
         tvShow.setValue(tvDetail);
         when(movieRepository.getTvById(tvId)).thenReturn(tvShow);
-
+        assertNotNull(tvShow);
+        if (tvDetail.data != null){
+            assertEquals(dummyTyShow.getId(), tvDetail.data.getId());
+            assertEquals(dummyTyShow.getOriginalName(), tvDetail.data.getOriginalName());
+            assertEquals(dummyTyShow.getName(), tvDetail.data.getName());
+            assertEquals(dummyTyShow.getFirstAirDate(), tvDetail.data.getFirstAirDate());
+            assertEquals(dummyTyShow.getOriginalLanguage(), tvDetail.data.getOriginalLanguage());
+            assertEquals(dummyTyShow.getOverview(), tvDetail.data.getOverview());
+            assertEquals(dummyTyShow.getBackdropPath(), tvDetail.data.getBackdropPath());
+            assertEquals(dummyTyShow.getPosterPath(), tvDetail.data.getPosterPath());
+            assertEquals(dummyTyShow.getVoteAverage(), tvDetail.data.getVoteAverage(), dummyTyShow.getVoteAverage());
+            assertEquals(dummyTyShow.getPopularity(), tvDetail.data.getPopularity(), dummyTyShow.getPopularity());
+            assertEquals(dummyTyShow.getVoteCount(), tvDetail.data.getVoteCount());
+        }
         viewModel.tvShowDetail.observeForever(tvObserver);
         verify(tvObserver).onChanged(tvDetail);
     }

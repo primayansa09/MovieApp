@@ -3,7 +3,6 @@ import com.example.moviecatalogue.ui.data.response.MovieResultsItem;
 import com.example.moviecatalogue.ui.data.response.TvResultsItem;
 import java.util.ArrayList;
 
-
 public class DataDummy {
 
     public static ArrayList<MovieResultsItem> generateDummyMovie(){
