@@ -53,7 +53,6 @@ public class MovieFragment extends Fragment {
                         case SUCCES:
                             fragmentMovieBinding.progressBarMovie.setVisibility(View.GONE);
                             movieAdapter.submitList(movie.data);
-                            movieAdapter.notifyDataSetChanged();
                             break;
                         case ERROR:
                             fragmentMovieBinding.progressBarMovie.setVisibility(View.GONE);

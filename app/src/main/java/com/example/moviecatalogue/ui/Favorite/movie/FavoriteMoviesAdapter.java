@@ -57,7 +57,6 @@ public class FavoriteMoviesAdapter extends PagedListAdapter<MovieResultsItem, Fa
          this.binding = binding;
       }
       void bind(MovieResultsItem model){
-         binding.tvTitleMovie.setText(model.getOriginalTitle());
          itemView.setOnClickListener(v ->{
             Intent intent = new Intent(itemView.getContext(), DetailActivity.class);
             intent.putExtra(DetailActivity.EXTRA_MODEL, model.getId());

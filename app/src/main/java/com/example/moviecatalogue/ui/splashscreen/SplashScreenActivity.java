@@ -7,7 +7,7 @@ import com.example.moviecatalogue.R;
 import com.example.moviecatalogue.ui.home.HomeActivity;
 import com.example.moviecatalogue.ui.until.Const;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class SplashScreen extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }finally {
-                        startActivity(new Intent(SplashScreen.this, HomeActivity.class));
+                        startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
                         finish();
                     }
             }

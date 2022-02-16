@@ -21,35 +21,23 @@ public class DataDummy {
                 634649,
                 6194));
         movie.add(new MovieResultsItem(
-                "The Eternals are a team of ancient aliens who have been living on Earth in secret for thousands of years. When an unexpected tragedy forces them out of the shadows, they are forced to reunite against mankind’s most ancient enemy, the Deviants.",
+                "The tale of an extraordinary family, the Madrigals, who live hidden in the mountains of Colombia, in a magical house, in a vibrant town, in a wondrous, charmed place called an Encanto. The magic of the Encanto has blessed every child in the family with a unique gift from super strength to the power to heal—every child except one, Mirabel. But when she discovers that the magic surrounding the Encanto is in danger, Mirabel decides that she, the only ordinary Madrigal, might just be her exceptional family's last hope.",
                 "en",
-                "Eternals",
-                "Eternals",
-                "/bcCBq9N1EMo3daNIjWJ8kYvrQm6.jpg",
-                "/k2twTjSddgLc1oFFHVibfxp2kQV.jpg",
-                "2021-11-03",
-                6908.207,
-                7.3F,
-                524434,
-                3603));
+                "Encanto",
+                "Encanto",
+                "/4j0PNHkMr5ax3IA8tjtxcmPU3QT.jpg",
+                "/3G1Q5xF40HkUBJXxt2DQgQzKTp5.jpg",
+                "2021-11-24",
+                3729.951,
+                7.8F,
+                568124,
+                4319));
         return movie;
     }
 
     public static ArrayList<TvResultsItem> generateDummyTv(){
         ArrayList<TvResultsItem> tvShow = new ArrayList<>();
 
-        tvShow.add(new TvResultsItem(
-                "2019-06-16",
-                "A group of high school students navigate love and friendships in a world of drugs, sex, trauma, and social media.",
-                "en",
-                "/jtnfNzqZwN4E32FGGxx1YZaBWWf.jpg",
-                "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
-                "Euphoria",
-                3585.423,
-                8.4F,
-                "Euphoria",
-                85552,
-                5857));
         tvShow.add(new TvResultsItem(
                 "2022-01-28",
                 "A high school becomes ground zero for a zombie virus outbreak. Trapped students must fight their way out — or turn into one of the rabid infected.",
@@ -62,6 +50,19 @@ public class DataDummy {
                 "All of Us Are Dead",
                 99966,
                 973));
+        tvShow.add(new TvResultsItem(
+                "2019-06-16",
+                "A group of high school students navigate love and friendships in a world of drugs, sex, trauma, and social media.",
+                "en",
+                "/jtnfNzqZwN4E32FGGxx1YZaBWWf.jpg",
+                "/oKt4J3TFjWirVwBqoHyIvv5IImd.jpg",
+                "Euphoria",
+                3585.423,
+                8.4F,
+                "Euphoria",
+                85552,
+                5857));
+
 
         return tvShow;
     }

@@ -9,6 +9,7 @@
         <entry key="..\:/wanda/Dicoding Project/MovieApp-main/app/src/main/res/layout/item_list.xml" value="0.19166666666666668" />
         <entry key="..\:/wanda/Dicoding Project/MovieCatalogue/app/src/main/res/drawable/ic_error.xml" value="0.2078125" />
         <entry key="..\:/wanda/Dicoding Project/MovieCatalogue/app/src/main/res/drawable/ic_favorite.xml" value="0.1145" />
+        <entry key="..\:/wanda/Dicoding Project/MovieCatalogue/app/src/main/res/drawable/ic_favorite_red.xml" value="0.1" />
         <entry key="..\:/wanda/Dicoding Project/MovieCatalogue/app/src/main/res/drawable/ic_loading.xml" value="0.2078125" />
         <entry key="..\:/wanda/Dicoding Project/MovieCatalogue/app/src/main/res/drawable/myrect.xml" value="0.2078125" />
         <entry key="..\:/wanda/Dicoding Project/MovieCatalogue/app/src/main/res/layout/activity_detail.xml" value="0.18" />
@@ -28,6 +29,7 @@
         <entry key="..\:/wanda/Dicoding Project/MovieCatalogue/app/src/main/res/layout/toolbar_home.xml" value="0.19166666666666668" />
         <entry key="..\:/wanda/Dicoding Project/MovieCatalogue/app/src/main/res/layout/toolbar_setting.xml" value="0.19166666666666668" />
         <entry key="..\:/wanda/Dicoding Project/MovieCatalogue/app/src/main/res/menu/toolbar.xml" value="0.19166666666666668" />
+        <entry key="..\:/wanda/Dicoding Project/MovieCatalogue/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1275" />
       </map>
     </option>
   </component>

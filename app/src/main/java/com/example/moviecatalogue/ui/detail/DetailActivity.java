@@ -166,6 +166,6 @@ public class DetailActivity extends AppCompatActivity {
         if (statusFavorite){
             activityDetailBinding.detailContent.imgFavDetail.setImageResource(R.drawable.ic_favorite_red);
         }else
-            activityDetailBinding.detailContent.imgFavDetail.setImageResource(R.drawable.ic_favorite);
+            activityDetailBinding.detailContent.imgFavDetail.setImageResource(R.drawable.ic_favorite_border);
     }
 }

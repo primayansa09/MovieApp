@@ -16,16 +16,13 @@ public class FavoritePagerAdapter extends FragmentStateAdapter {
    @NonNull
    @Override
    public Fragment createFragment(int position) {
-      Fragment fragment = null;
       switch (position){
          case 0:
-            fragment = new FavoriteMovieFragment();
-            break;
+            return new FavoriteMovieFragment();
          case 1:
-            fragment = new FavoriteTvFragment();
-            break;
+            return new FavoriteTvFragment();
       }
-      return fragment;
+      return new Fragment();
    }
 
    @Override

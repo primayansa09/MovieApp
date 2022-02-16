@@ -30,7 +30,7 @@
             android:exported="false"
             android:theme="@style/Theme.MovieNoToolbar" />
         <activity
-            android:name=".ui.splashscreen.SplashScreen"
+            android:name=".ui.splashscreen.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/Theme.MovieNoToolbar">
             <intent-filter>

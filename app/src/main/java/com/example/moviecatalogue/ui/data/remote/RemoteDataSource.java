@@ -1,6 +1,5 @@
 package com.example.moviecatalogue.ui.data.remote;
 import static com.example.moviecatalogue.ui.until.Const.API_KEY;
-import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -46,7 +45,6 @@ public class RemoteDataSource {
 
             @Override
             public void onFailure(Call<MovieResponse> call, Throwable t) {
-                    Log.e(TAG, "onFailure: " + t.getMessage());
                     EspressoIdlingResource.decrement();
             }
 
@@ -66,14 +64,12 @@ public class RemoteDataSource {
                     if (response.body() != null){
                         resultTv.postValue(ApiResponse.success(result));
                         EspressoIdlingResource.decrement();
-                        Log.d(TAG, "onResponse: " + response.body().getResults());
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<TvShowResponse> call, Throwable t) {
-                Log.e(TAG, "onFailure: " + t.getMessage());
                 EspressoIdlingResource.decrement();
             }
         });

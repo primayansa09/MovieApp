@@ -59,7 +59,6 @@ public class FavoriteTvAdapter extends PagedListAdapter<TvResultsItem, FavoriteT
          this.binding = binding;
       }
       void bind(TvResultsItem model){
-         binding.tvTitleMovie.setText(model.getOriginalName());
          itemView.setOnClickListener(v ->{
             Intent intent = new Intent(itemView.getContext(), DetailActivity.class);
             intent.putExtra(DetailActivity.EXTRA_MODEL_TV, model.getId());

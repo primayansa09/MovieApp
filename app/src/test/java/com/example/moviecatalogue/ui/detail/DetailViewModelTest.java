@@ -56,7 +56,6 @@ public class DetailViewModelTest {
         movies.setValue(movieDetail);
         when(movieRepository.getMovieById(movieId)).thenReturn(movies);
         assertNotNull(movies);
-        if (movieDetail.data != null){
             assertEquals(dummyMovie.getId(), movieDetail.data.getId());
             assertEquals(dummyMovie.getOriginalTitle(), movieDetail.data.getOriginalTitle());
             assertEquals(dummyMovie.getTitle(), movieDetail.data.getTitle());
@@ -68,7 +67,7 @@ public class DetailViewModelTest {
             assertEquals(dummyMovie.getPosterPath(), movieDetail.data.getPosterPath());
             assertEquals(dummyMovie.getBackdropPath(), movieDetail.data.getBackdropPath());
             assertEquals(dummyMovie.getVoteCount(), movieDetail.data.getVoteCount());
-        }
+
         viewModel.movieDetail.observeForever(movieObserver);
         verify(movieObserver).onChanged(movieDetail);
     }
@@ -80,7 +79,6 @@ public class DetailViewModelTest {
         tvShow.setValue(tvDetail);
         when(movieRepository.getTvById(tvId)).thenReturn(tvShow);
         assertNotNull(tvShow);
-        if (tvDetail.data != null){
             assertEquals(dummyTyShow.getId(), tvDetail.data.getId());
             assertEquals(dummyTyShow.getOriginalName(), tvDetail.data.getOriginalName());
             assertEquals(dummyTyShow.getName(), tvDetail.data.getName());
@@ -92,7 +90,7 @@ public class DetailViewModelTest {
             assertEquals(dummyTyShow.getVoteAverage(), tvDetail.data.getVoteAverage(), dummyTyShow.getVoteAverage());
             assertEquals(dummyTyShow.getPopularity(), tvDetail.data.getPopularity(), dummyTyShow.getPopularity());
             assertEquals(dummyTyShow.getVoteCount(), tvDetail.data.getVoteCount());
-        }
+
         viewModel.tvShowDetail.observeForever(tvObserver);
         verify(tvObserver).onChanged(tvDetail);
     }

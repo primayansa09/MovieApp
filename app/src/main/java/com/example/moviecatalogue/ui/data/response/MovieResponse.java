@@ -23,20 +23,9 @@ public final class MovieResponse {
 		this.totalResults = totalResults;
 	}
 
-	public final int getPage() {
-		return this.page;
-	}
-
-	public final int getTotalPages() {
-		return this.totalPages;
-	}
-
 	@NotNull
 	public final List getResults() {
 		return this.results;
 	}
 
-	public final int getTotalResults() {
-		return this.totalResults;
-	}
 }

@@ -58,7 +58,6 @@ public class TvShowAdapter extends PagedListAdapter<TvResultsItem, TvShowAdapter
         }
 
         void bind(TvResultsItem tvShow){
-            binding.tvTitleMovie.setText(tvShow.getOriginalName());
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), DetailActivity.class);
                 intent.putExtra(DetailActivity.EXTRA_MODEL_TV, tvShow.getId());

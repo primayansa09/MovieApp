@@ -105,7 +105,7 @@ public class HomeActivityTest {
     @Test
     public void loadDetailTvShow(){
         onView(withText("TV SHOW")).perform(click());
-        onView(withId(R.id.rv_tvShow)).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
+        onView(withId(R.id.rv_tvShow)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         onView(withId(R.id.imgDetail)).check(matches(isDisplayed()));
         onView(withId(R.id.tvOriginalTitle)).check(matches(isDisplayed()));
         onView(withId(R.id.tvOriginalTitle)).check(matches(withText(dummyTv.get(0).getOriginalName())));
@@ -172,7 +172,7 @@ public class HomeActivityTest {
     public void loadFavTvShowDetail(){
         onView(withId(R.id.img_favorite)).perform(click());
         onView(withText("FAVORITE TV")).perform(click());
-        onView(withId(R.id.rv_tvFav)).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
+        onView(withId(R.id.rv_tvFav)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         onView(withId(R.id.imgDetail)).check(matches(isDisplayed()));
         onView(withId(R.id.tvOriginalTitle)).check(matches(isDisplayed()));
         onView(withId(R.id.tvOriginalTitle)).check(matches(withText(dummyTv.get(0).getOriginalName())));
