@@ -27,13 +27,14 @@ public class FavoriteActivity extends AppCompatActivity {
         binding = ActivityFavoriteBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        FavoritePagerAdapter favoritePagerAdapter = new FavoritePagerAdapter(this);
-        ViewPager2 viewPager = findViewById(R.id.FavViewPager);
-        viewPager.setAdapter(favoritePagerAdapter);
-        TabLayout tabs = findViewById(R.id.tabLayoutFav);
-        new TabLayoutMediator(tabs, viewPager,
-                (tab, position) -> tab.setText(getResources().getString(TAB_TITLE[position]))
-        ).attach();
+            FavoritePagerAdapter favoritePagerAdapter = new FavoritePagerAdapter(this);
+            ViewPager2 viewPager = findViewById(R.id.FavViewPager);
+            viewPager.setAdapter(favoritePagerAdapter);
+            TabLayout tabs = findViewById(R.id.tabLayoutFav);
+            new TabLayoutMediator(tabs, viewPager,
+                    (tab, position) -> tab.setText(getResources().getString(TAB_TITLE[position]))
+            ).attach();
+
 
         binding.toolbarFavorite.imgBackFavorite.setOnClickListener(v -> finish());
     }

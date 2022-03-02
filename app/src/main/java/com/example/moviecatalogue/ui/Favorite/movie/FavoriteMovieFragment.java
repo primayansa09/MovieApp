@@ -53,18 +53,21 @@ public class FavoriteMovieFragment extends Fragment {
                     favAdapter.submitList(movies);
 
             });
-
         }
+
         RecyclerviewFav();
     }
 
-    private void RecyclerviewFav() {
-        binding.rvMovieFav.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        binding.rvMovieFav.setHasFixedSize(true);
-        binding.rvMovieFav.setAdapter(favAdapter);
 
-        itemTouchHelper.attachToRecyclerView(binding.rvMovieFav);
-    }
+    private void RecyclerviewFav() {
+
+            binding.rvMovieFav.setLayoutManager(new GridLayoutManager(getContext(), 2));
+            binding.rvMovieFav.setHasFixedSize(true);
+            binding.rvMovieFav.setAdapter(favAdapter);
+
+            itemTouchHelper.attachToRecyclerView(binding.rvMovieFav);
+
+        }
 
     private ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.Callback() {
         @Override

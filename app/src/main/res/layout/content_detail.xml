@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <ImageView
         android:id="@+id/imgDetail"
         android:layout_width="170dp"
@@ -16,39 +15,34 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/image"/>
 
-    <!--<LinearLayout
-        android:id="@+id/lyt_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imgDetail"
-        app:layout_constraintTop_toTopOf="@id/imgDetail">-->
-
         <TextView
             android:id="@+id/tvOriginalTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:maxLines="2"
             android:fontFamily="@font/roboto_black"
             android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             app:layout_constraintStart_toEndOf="@+id/imgDetail"
             app:layout_constraintTop_toTopOf="@id/imgDetail"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:text="@string/original_title"/>
 
         <TextView
             android:id="@+id/tvTitleDetail"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:maxLines="2"
             android:fontFamily="@font/roboto_black"
             android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             app:layout_constraintStart_toEndOf="@id/imgDetail"
             app:layout_constraintTop_toBottomOf="@+id/tvOriginalTitle"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:text="@string/title"/>
 
         <TextView
@@ -70,7 +64,6 @@
             app:layout_constraintTop_toBottomOf="@+id/tvReleaseDetail"
             tools:text="@string/original_language" />
 
-    <!--</LinearLayout>-->
 
     <RatingBar
         android:id="@+id/rantingBar"
